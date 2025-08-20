@@ -1,0 +1,31 @@
+:root{ --bg:#0c0c0f; --fg:#f5f5f5; --mut:#b0b3b8; --card:#141418; --accent:#e63946; --accent2:#ff4c4c; --border:#27272f; }
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);font:14px system-ui, Segoe UI, Roboto, Arial}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);position:sticky;top:0;background:#0c0c0fec;backdrop-filter:blur(8px)}
+.top h1{margin:0;font-size:18px}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.controls input{background:#0f0f13;color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+button{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:8px 12px;font-weight:700;cursor:pointer}
+button:hover{filter:brightness(1.05)}
+button.ghost{background:transparent;border:1px solid var(--border);color:var(--fg)}
+.range{display:flex;gap:8px;align-items:center}
+main{padding:16px;display:grid;gap:16px}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+.big{font-size:34px; font-weight:800; color:#fff}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.flex{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px;border-bottom:1px solid var(--border);vertical-align:top}
+ul{margin:0;padding-left:18px}
+.muted{color:var(--mut)}
+.row{display:flex;gap:8px;align-items:center}
+#patterns .pat{display:grid;grid-template-columns:90px 1fr 1fr auto;gap:8px;margin-bottom:8px}
+#patterns input, #patterns select{width:100%;background:#0f0f13;color:#fff;border:1px solid var(--border);border-radius:8px;padding:6px 8px}
+canvas{background:#101016;border:1px solid var(--border);border-radius:8px}
+
+.acc-list{display:flex;flex-wrap:wrap;gap:8px}
+.acc-item{background:#101016;border:1px solid var(--border);padding:8px 10px;border-radius:10px;display:flex;align-items:center;gap:8px}
+.acc-item b{margin-right:6px}
+.acc-item button{padding:6px 10px;border-radius:8px}
+.acc-item .ghost{border-color:#ff8a8a;color:#ff8a8a}

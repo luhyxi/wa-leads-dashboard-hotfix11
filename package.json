@@ -1,0 +1,29 @@
+{
+  "name": "wa-leads-dashboard",
+  "version": "2.0.1",
+  "description": "WA Leads Dashboard PT-BR (dark/red) com SQLite, reset di\u00e1rio e gr\u00e1ficos",
+  "main": "main.js",
+  "author": "Voc\u00ea",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.waleads.dashboard",
+    "productName": "WA Leads Dashboard",
+    "files": [
+      "**/*"
+    ],
+    "asar": true,
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
+    "sqlite3": "^5.1.6",
+    "chart.js": "^4.4.0"
+  }
+}
