@@ -1,0 +1,83 @@
+<!doctype html><html lang="pt-br"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>WA Leads Dashboard</title>
+<link rel="stylesheet" href="style.css"/>
+</head><body>
+<header class="top">
+  <h1>WA Leads Dashboard</h1>
+  <div class="controls">
+    <input id="accName" placeholder="Nome da conta (ex.: Vendas 01)"/><button id="addAcc">Adicionar Conta</button>
+    <div class="range">
+      <label>Período:</label>
+      <input type="date" id="from"/><span>→</span><input type="date" id="to"/>
+      <button id="apply">Aplicar</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="panel">
+  <h3>Gerenciar Contas</h3>
+  <div id="accList" class="acc-list"></div>
+  <small class="muted">Remover conta também apaga a sessão salva. Opcionalmente você pode remover os eventos ligados a ela.</small>
+</section>
+
+  <section class="cards">
+    <div class="card">
+      <h3>Leads de Hoje</h3>
+      <div id="todayCount" class="big">0</div>
+    </div>
+    <div class="card">
+      <h3>Por Conta (hoje)</h3>
+      <ul id="byAcc"></ul>
+    </div>
+    <div class="card">
+      <h3>Por Padrão (hoje)</h3>
+      <ul id="byPat"></ul>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h3>Gráfico diário</h3>
+      <div class="actions">
+        <button id="typeBar">Barras</button>
+        <button id="typeLine">Linha</button>
+      </div>
+    </div>
+    <canvas id="chart" height="110"></canvas>
+  </section>
+
+  <section class="flex">
+    <div class="panel">
+      <h3>Leads (últimos)</h3>
+      <table id="leads"><thead><tr><th>Quando</th><th>Conta</th><th>Contato</th><th>Padrão</th><th>Mensagem</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="panel">
+      <h3>Padrões</h3>
+      <div id="patterns"></div>
+      <button id="addPattern">Novo padrão</button>
+      <button id="savePatterns">Salvar padrões</button>
+      <small>Tipos: equals • contains • startsWith • regex</small>
+
+      <h3 style="margin-top:18px">Configurações</h3>
+      <div class="row">
+        <label>Dias para reativação:</label>
+        <input id="cfgDays" type="number" min="0" style="width:90px"/>
+        <button id="saveCfg">Salvar</button>
+      </div>
+      <div class="row">
+        <button id="clearDb" class="ghost">Zerar base</button>
+        <span id="lastEvent" class="muted" style="margin-left:auto">Último evento: —</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h3>Eventos (debug)</h3>
+    <table id="events"><thead><tr><th>Quando</th><th>Conta</th><th>Contato</th><th>Tipo</th><th>Msg</th></tr></thead><tbody></tbody></table>
+  </section>
+</main>
+
+<script src="renderer.js"></script>
+</body></html>

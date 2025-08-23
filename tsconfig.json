@@ -1,0 +1,28 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"_version": "24.0.0",
+	"compilerOptions": {
+		"lib": ["es2024", "dom"],
+
+		"module": "nodenext",
+		"target": "es2024",
+
+		"noEmit": true,
+		"allowJs": true,
+
+		"strict": true,
+		"allowImportingTsExtensions": true,
+
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+
+		"moduleResolution": "node16",
+		"outDir": ".",
+		"rootDir": "./src",
+		"resolveJsonModule": true,
+		"declaration": true,
+		"sourceMap": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
+}
