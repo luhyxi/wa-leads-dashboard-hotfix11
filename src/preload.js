@@ -99,7 +99,7 @@ window.__waSendTest = (text = "TESTE") => {
 				// Fallback: alguns layouts não possuem [data-testid="msg-container"]. Usa spans genéricos.
 				if (!containers || containers.length === 0) {
 					__waLog("[WA Leads] CHAT fallback sem msg-container");
-					const spans = root.querySelectorAll('span[dir="auto"]');
+					const spans = root.querySelectorAll('._ao3e.selectable-text.copyable-text');
 					let lastText = null;
 					for (let i = spans.length - 1; i >= 0; i--) {
 						const t = (spans[i].innerText || "").trim();
@@ -111,7 +111,7 @@ window.__waSendTest = (text = "TESTE") => {
 					if (lastText && lastText !== window.__wa_last_open_text) {
 						window.__wa_last_open_text = lastText;
 						__waLog("[WA Leads] CHAT Fallback texto", { t: lastText });
-						console.log("line 114")
+						console.log("line 114");
 						dispatch(accountId, readHeaderContact(), lastText);
 					}
 					return; // termina aqui no fallback
@@ -138,7 +138,7 @@ window.__waSendTest = (text = "TESTE") => {
 					if (t && !isOutgoing(t) && t !== lastOpenText) {
 						lastOpenText = t;
 						__waLog("[WA Leads] CHAT texto", { t });
-						console.log("line 140")
+						console.log("line 140");
 						dispatch(accountId, readHeaderContact(), t);
 						return;
 					}
@@ -175,32 +175,38 @@ window.__waSendTest = (text = "TESTE") => {
 		const lastPreviewByContact = new Map();
 		function readHeaderContact() {
 			try {
-				const allSpans = document.querySelectorAll('span');
+				// Find the parent element with data-tab="6"
+				const parentElement = document.querySelector('[data-tab="6"]');
 
-				const thing = Array.from(allSpans).find(span => {
-					const rect = span.getBoundingClientRect();
-					return Math.abs(rect.width - 54.31) < 0.1 && Math.abs(rect.height - 21) < 0.1;
-				});
-
-				if (thing) {
-					console.log("Found span:", {
-						tagName: thing.tagName,
-						textContent: thing.textContent,
-						className: thing.className,
-						id: thing.id,
-						width: thing.getBoundingClientRect().width,
-						height: thing.getBoundingClientRect().height
-					});
-				} else {
-					console.log("No span with dimensions 54.31 x 21 found");
+				if (!parentElement) {
+					console.log("No element with data-tab='6' found");
+					return "Contato";
 				}
 
-				return thing ? (thing.textContent || "").trim() : "aiaizinho";
-			} catch (_e) {
-				console.error("Error in readHeaderContact:", _e);
-				return "aiai";
+				// Find the first span child within this parent
+				const firstSpan = parentElement.querySelector('span');
+
+				if (!firstSpan) {
+					console.log("No span found within element with data-tab='6'");
+					return "Contato";
+				}
+
+				// Get the text content and trim it
+				const textContent = firstSpan.textContent?.trim();
+
+				if (!textContent) {
+					console.log("First span within data-tab='6' element has no content");
+					return "Contato";
+				}
+
+				return textContent;
+
+			} catch (error) {
+				console.error("Error in readHeaderContact:", error);
+				return "Contato";
 			}
 		}
+
 		function contactFromRow(row) {
 			const a = row.querySelector("span[title]");
 			if (a) return a.getAttribute("title") || a.textContent || null;
