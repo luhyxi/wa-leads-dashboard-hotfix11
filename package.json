@@ -27,11 +27,11 @@
 	},
 	"dependencies": {
 		"chart.js": "^4.4.0",
-		"electron": "^30.0.0",
-		"electron-builder": "^24.13.3",
 		"sqlite3": "^5.1.6"
 	},
 	"devDependencies": {
+		"electron": "^30.0.0",
+		"electron-builder": "^24.13.3",
 		"@biomejs/biome": "2.2.0",
 		"@types/node": "^24.3.0",
 		"ts-node": "^10.9.2",
